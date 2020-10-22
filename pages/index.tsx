@@ -1,8 +1,21 @@
+import React from 'react'
 import Head from 'next/head';
-import { Button } from 'rsuite';
+import Link from 'next/link';
+import { Button, Nav } from 'rsuite';
 
 import 'rsuite/lib/styles/index.less';
 import 'styles/index.less';
+
+type Props = {as: URL, href: URL}
+
+const NavLink = React.forwardRef<HTMLAnchorElement, Props>((props, ref) => {
+  const { as, href, ...rest } = props;
+  return (
+    <Link href={href} as={as}>
+      <a ref={ref} {...rest} />
+    </Link>
+  );
+});
 
 export default function Home() {
   return (
@@ -43,6 +56,16 @@ export default function Home() {
             development experience.
             <br />
           </p>
+          <hr></hr>
+            <Nav>
+              <Nav.Item componentClass={NavLink} href="/page1">
+                Page 1
+              </Nav.Item>
+              <Nav.Item componentClass={NavLink} href="/page2">
+                Page 2
+              </Nav.Item>
+            </Nav>
+            <hr></hr>
           <Button appearance="primary" href="https://rsuitejs.com/">
             Getting started
           </Button>
