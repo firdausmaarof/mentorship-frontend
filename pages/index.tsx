@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Button, Nav } from 'rsuite';
@@ -6,7 +6,9 @@ import { Button, Nav } from 'rsuite';
 import 'rsuite/lib/styles/index.less';
 import 'styles/index.less';
 
-type Props = {as: URL, href: URL}
+import Navigation from 'components/Navigation';
+
+type Props = { as: URL; href: URL };
 
 const NavLink = React.forwardRef<HTMLAnchorElement, Props>((props, ref) => {
   const { as, href, ...rest } = props;
@@ -49,6 +51,7 @@ export default function Home() {
       </Head>
 
       <main>
+        <Navigation />
         <div className="hero">
           <h1 className="title">Welcome to React Suite</h1>
           <p className="description">
@@ -57,15 +60,15 @@ export default function Home() {
             <br />
           </p>
           <hr></hr>
-            <Nav>
-              <Nav.Item componentClass={NavLink} href="/page1">
-                Page 1
-              </Nav.Item>
-              <Nav.Item componentClass={NavLink} href="/page2">
-                Page 2
-              </Nav.Item>
-            </Nav>
-            <hr></hr>
+          <Nav>
+            <Nav.Item componentClass={NavLink} href="/page1">
+              Page 1
+            </Nav.Item>
+            <Nav.Item componentClass={NavLink} href="/page2">
+              Page 3
+            </Nav.Item>
+          </Nav>
+          <hr></hr>
           <Button appearance="primary" href="https://rsuitejs.com/">
             Getting started
           </Button>
